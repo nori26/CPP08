@@ -23,8 +23,12 @@ all		: $(NAME)
 
 -include $(DEPENDS)
 
+t :
+	echo $(SRCS)
+
+
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
-	mkdir -p $(*D)
+	@mkdir -p $(*D)
 	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 	@echo -e "	""$(GREEN)$@$(RESET)"
 
