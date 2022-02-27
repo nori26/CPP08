@@ -37,7 +37,5 @@ void ef_n_test(const T &container, size_t n) {
   }
 }
 
-template <class T>
-
 }  // namespace ft
 #endif

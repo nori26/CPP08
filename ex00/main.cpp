@@ -32,7 +32,7 @@ void push_n_back(std::vector<int> &v, size_t n) {
   }
 }
 
-void insert_n(std::set<int> &, size_t n) {
+void insert_n(std::set<int> &s, size_t n) {
   for (size_t i = 0; i < n; i++) {
     s.insert(i);
   }
@@ -90,4 +90,7 @@ void set_test() {
   ft::eftest(const_mult_set, 3);
 }
 
-int main() { vector_test(); }
+int main() {
+  vector_test();
+  set_test();
+}
