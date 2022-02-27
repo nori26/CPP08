@@ -32,11 +32,7 @@ void push_n_back(std::vector<int> &v, size_t n) {
   }
 }
 
-<<<<<<< HEAD
 void insert_n(std::set<int> &s, size_t n) {
-=======
-void insert_n(std::set<int> &, size_t n) {
->>>>>>> c9abed9ce5aa55105f554d21d9cf6a9b500ec1fd
   for (size_t i = 0; i < n; i++) {
     s.insert(i);
   }
@@ -92,14 +88,11 @@ void set_test() {
   ft::eftest(const_set, 1);
   ft::ef_n_test(const_mult_set, 3);
   ft::eftest(const_mult_set, 3);
-<<<<<<< HEAD
 }
 
 int main() {
   vector_test();
   set_test();
-=======
->>>>>>> c9abed9ce5aa55105f554d21d9cf6a9b500ec1fd
 }
 
 int main() { vector_test(); }

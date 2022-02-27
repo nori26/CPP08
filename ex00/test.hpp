@@ -36,11 +36,5 @@ void ef_n_test(const T &container, size_t n) {
     eftest(container, i);
   }
 }
-<<<<<<< HEAD
-=======
-
-template <class T>
-
->>>>>>> c9abed9ce5aa55105f554d21d9cf6a9b500ec1fd
 }  // namespace ft
 #endif
