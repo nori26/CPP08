@@ -38,10 +38,6 @@ void ef_n_test(const T &container, size_t n) {
 }
 
 template <class T>
-void push_n_back(T &container, size_t n) {
-  for (size_t i = 0; i < n; i++) {
-    container.push_back(i);
-  }
-}
+
 }  // namespace ft
 #endif

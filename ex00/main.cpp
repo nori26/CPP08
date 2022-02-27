@@ -1,6 +1,7 @@
 #include <easyfind.hpp>
 #include <iomanip>
 #include <iostream>
+#include <set>
 #include <vector>
 
 #include "color.hpp"
@@ -25,6 +26,18 @@ void print_header(std::string funcname) {
             << RESET_COLOR << RESET_UNDERLINE << std::endl;
 }
 
+void push_n_back(std::vector<int> &v, size_t n) {
+  for (size_t i = 0; i < n; i++) {
+    v.push_back(i);
+  }
+}
+
+void insert_n(std::set<int> &, size_t n) {
+  for (size_t i = 0; i < n; i++) {
+    s.insert(i);
+  }
+}
+
 void vector_test() {
   std::vector<int> empty;
   std::vector<int> v;
@@ -39,7 +52,7 @@ void vector_test() {
   v.push_back(0);
   ft::eftest(v, 0);
 
-  ft::push_n_back(mult_v, 3);
+  push_n_back(mult_v, 3);
   ft::ef_n_test(mult_v, 3);
   ft::eftest(mult_v, 3);
 
@@ -49,6 +62,32 @@ void vector_test() {
   ft::eftest(const_v, 1);
   ft::ef_n_test(const_mult_v, 3);
   ft::eftest(const_mult_v, 3);
+}
+
+void set_test() {
+  std::set<int> empty;
+  std::set<int> set;
+  std::set<int> mult_set;
+  const std::set<int> &const_empty = empty;
+  const std::set<int> &const_set = set;
+  const std::set<int> &const_mult_set = mult_set;
+
+  print_header(__func__);
+  ft::eftest(empty, 0);
+
+  set.insert(0);
+  ft::eftest(set, 0);
+
+  insert_n(mult_set, 3);
+  ft::ef_n_test(mult_set, 3);
+  ft::eftest(mult_set, 3);
+
+  /* const test */
+  print_header(std::string("const ") + __func__);
+  ft::eftest(const_empty, 0);
+  ft::eftest(const_set, 1);
+  ft::ef_n_test(const_mult_set, 3);
+  ft::eftest(const_mult_set, 3);
 }
 
 int main() { vector_test(); }
