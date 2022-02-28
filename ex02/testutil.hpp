@@ -12,6 +12,6 @@ void iter_test(Iter begin, Iter end) {
     std::cout << *begin << ", ";
   }
   std::cout << std::endl;
-};
+}
 }  // namespace fortytwo
 #endif
