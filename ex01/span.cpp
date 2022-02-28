@@ -4,6 +4,7 @@
 #include <climits>
 #include <iostream>
 #include <set>
+#include <stdexcept>
 #include <utility>
 
 typedef std::set<int>::iterator SetIter;
@@ -32,29 +33,26 @@ Span &Span::operator=(Span const &other) {
 
 void Span::addNumber(int num) {
   if (added == capacity) {
-    std::cout << "cap error" << std::endl;
-    return;  // exception
+    throw Span::TooManyElemException();
   }
+  added++;
   Pair result = storage.insert(num);
   SetIter place = result.first;
   bool is_duplicate = result.second == false;
   has_duplicate |= is_duplicate;
-  added++;
   update_shotest_span(place);
 }
 
 unsigned int Span::shortestSpan() const {
   if (added < 2) {
-    std::cout << "span error" << std::endl;
-    return UINT_MAX;  // exception
+    throw Span::TooFewElemException();
   }
   return shortest_span;
 }
 
 unsigned int Span::longestSpan() const {
   if (added < 2) {
-    std::cout << "span error" << std::endl;
-    return UINT_MAX;  // exception
+    throw Span::TooFewElemException();
   }
   int min_value = *storage.begin();
   int max_value = *--storage.end();
@@ -102,3 +100,8 @@ void Span::print_storage() const {
   }
   std::cout << std::endl;
 }
+
+Span::TooManyElemException::TooManyElemException(const std::string &msg)
+    : std::runtime_error(msg) {}
+Span::TooFewElemException::TooFewElemException(const std::string &msg)
+    : std::runtime_error(msg) {}

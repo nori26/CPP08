@@ -1,6 +1,7 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 #include <set>
+#include <stdexcept>
 class Span {
  private:
   unsigned int capacity;
@@ -21,5 +22,12 @@ class Span {
   void print_storage() const;
   unsigned int shortestSpan() const;
   unsigned int longestSpan() const;
+
+  class TooManyElemException : public std::runtime_error {
+   public:
+    TooManyElemException(const std::string &msg = "too many elements");
+  } class TooFewElemException : public std::runtime_error {
+    TooFewElemException(const std::string &msg = "too few elements");
+  }
 };
 #endif
