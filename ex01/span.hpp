@@ -14,8 +14,8 @@ class Span {
   unsigned int added;
   unsigned int shortest_span;
   std::set<int> storage;
-  unsigned int get_prev_span(SetIter place);
-  unsigned int get_next_span(SetIter place);
+  unsigned int get_prev_span(SetIter place) const;
+  unsigned int get_next_span(SetIter place) const;
   void update_shotest_span(Pair result);
 
  public:

@@ -11,7 +11,7 @@ namespace ft = fortytwo;
 
 #define PUT_HEADER() ft::print_header(__func__)
 
-void print_span(Span &span) {
+void print_span(const Span &span) {
   std::cout << "storage : ";
   span.print_storage();
   std::cout << "shotest : " << span.shortestSpan() << "\n";

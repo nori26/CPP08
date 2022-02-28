@@ -83,7 +83,7 @@ void Span::update_shotest_span(Pair result) {
   if (new_span < shortest_span) shortest_span = new_span;
 }
 
-unsigned int Span::get_prev_span(SetIter now) {
+unsigned int Span::get_prev_span(SetIter now) const {
   if (now == storage.begin()) {
     return (UINT_MAX);
   }
@@ -93,7 +93,7 @@ unsigned int Span::get_prev_span(SetIter now) {
   return (span);
 }
 
-unsigned int Span::get_next_span(SetIter now) {
+unsigned int Span::get_next_span(SetIter now) const {
   if (next(now) == storage.end()) {
     return (UINT_MAX);
   }
