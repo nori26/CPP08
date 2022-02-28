@@ -4,16 +4,17 @@
 #include <climits>
 #include <iostream>
 #include <set>
+#include <stdexcept>
 #include <utility>
 
 typedef std::set<int>::iterator SetIter;
-typedef std::pair<SetIter, bool> Pair;
+
 namespace {
 SetIter next(SetIter iter) { return (++iter); }
 SetIter prev(SetIter iter) { return (--iter); }
 }  // namespace
-Span::Span(unsigned int N)
-    : capacity(N), added(), shortest_span(UINT_MAX), has_duplicate(false) {}
+
+Span::Span(unsigned int N) : capacity(N), added(), shortest_span(UINT_MAX) {}
 
 Span::~Span() {}
 
@@ -32,45 +33,42 @@ Span &Span::operator=(Span const &other) {
 
 void Span::addNumber(int num) {
   if (added == capacity) {
-    std::cout << "cap error" << std::endl;
-    return;  // exception
+    throw Span::TooManyElemException();
   }
-  Pair result = storage.insert(num);
-  SetIter place = result.first;
-  bool is_duplicate = result.second == false;
-  has_duplicate |= is_duplicate;
   added++;
-  update_shotest_span(place);
+  Pair result = storage.insert(num);
+  update_shotest_span(result);
 }
 
 unsigned int Span::shortestSpan() const {
   if (added < 2) {
-    std::cout << "span error" << std::endl;
-    return UINT_MAX;  // exception
+    throw Span::TooFewElemException();
   }
   return shortest_span;
 }
 
 unsigned int Span::longestSpan() const {
   if (added < 2) {
-    std::cout << "span error" << std::endl;
-    return UINT_MAX;  // exception
+    throw Span::TooFewElemException();
   }
   int min_value = *storage.begin();
   int max_value = *--storage.end();
   return max_value - min_value;
 }
 
-void Span::update_shotest_span(SetIter place) {
-  if (has_duplicate) {
+void Span::update_shotest_span(Pair result) {
+  SetIter added_place = result.first;
+  bool is_duplicate = result.second == false;
+
+  if (is_duplicate) {
     shortest_span = 0;
     return;
   }
   if (storage.size() < 2) {
     return;
   }
-  unsigned int prev_span = get_prev_span(place);
-  unsigned int next_span = get_next_span(place);
+  unsigned int prev_span = get_prev_span(added_place);
+  unsigned int next_span = get_next_span(added_place);
   unsigned int latest_span = std::min(prev_span, next_span);
 
   if (latest_span < shortest_span) shortest_span = latest_span;
@@ -102,3 +100,8 @@ void Span::print_storage() const {
   }
   std::cout << std::endl;
 }
+
+Span::TooManyElemException::TooManyElemException(const std::string &msg)
+    : std::runtime_error(msg) {}
+Span::TooFewElemException::TooFewElemException(const std::string &msg)
+    : std::runtime_error(msg) {}
