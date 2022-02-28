@@ -105,7 +105,7 @@ unsigned int Span::get_next_span(SetIter now) {
 
 void Span::print_storage() const {
   for (SetIter i = storage.begin(), end = storage.end(); i != end; i++) {
-    std::cout << *i << ",";
+    std::cout << *i << ", ";
   }
   std::cout << std::endl;
 }
