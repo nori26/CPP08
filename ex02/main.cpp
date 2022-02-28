@@ -46,19 +46,22 @@ void operatoreq_test() {
   std::cout << std::endl;
 }
 
-void it_test(MutantStack<int>::iterator begin, MutantStack<int>::iterator end) {
-  for (; begin != end; begin++) {
-    std::cout << *begin << ", ";
-  }
-  std::cout << std::endl;
-}
-
 void normal_iter_test(MutantStack<int> mstack) {
   PUT_HEADER();
   ft::iter_test(mstack.begin(), mstack.end());
 }
 
+void const_normal_iter_test(const MutantStack<int> mstack) {
+  PUT_HEADER();
+  ft::iter_test(mstack.begin(), mstack.end());
+}
+
 void reverse_normal_iter_test(MutantStack<int> mstack) {
+  PUT_HEADER();
+  ft::iter_test(mstack.rbegin(), mstack.rend());
+}
+
+void const_reverse_iter_test(const MutantStack<int> mstack) {
   PUT_HEADER();
   ft::iter_test(mstack.rbegin(), mstack.rend());
 }
@@ -69,16 +72,18 @@ void mstack_init(MutantStack<int> &mstack) {
   }
 }
 
-void iterator_test() {
+void iter_test() {
   MutantStack<int> mstack;
 
   mstack_init(mstack);
   normal_iter_test(mstack);
+  const_normal_iter_test(mstack);
   reverse_normal_iter_test(mstack);
+  const_reverse_iter_test(mstack);
 }
 
 int main() {
   subject_test();
   operatoreq_test();
-  iterator_test();
+  iter_test();
 }
