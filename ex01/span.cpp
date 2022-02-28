@@ -6,6 +6,7 @@
 #include <set>
 #include <stdexcept>
 #include <utility>
+#include <vector>
 
 typedef std::set<int>::iterator SetIter;
 
@@ -38,6 +39,14 @@ void Span::addNumber(int num) {
   added++;
   Pair result = storage.insert(num);
   update_shotest_span(result);
+}
+
+void Span::addNumber(std::vector<int>::iterator begin,
+                     std::vector<int>::iterator end) {
+  for (std::vector<int>::iterator itr = begin; itr != end; itr++) {
+    int n = *itr;
+    addNumber(n);
+  }
 }
 
 unsigned int Span::shortestSpan() const {

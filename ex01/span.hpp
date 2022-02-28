@@ -3,6 +3,7 @@
 #include <set>
 #include <stdexcept>
 #include <utility>
+#include <vector>
 
 class Span {
  private:
@@ -22,10 +23,13 @@ class Span {
   ~Span();
   Span(Span const &other);
   Span &operator=(Span const &other);
+
   void addNumber(int num);
-  void print_storage() const;
+  void addNumber(std::vector<int>::iterator begin,
+                 std::vector<int>::iterator end);
   unsigned int shortestSpan() const;
   unsigned int longestSpan() const;
+  void print_storage() const;
 
   class TooManyElemException : public std::runtime_error {
    public:
