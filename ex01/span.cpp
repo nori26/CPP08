@@ -67,11 +67,11 @@ void Span::update_shotest_span(Pair result) {
   if (storage.size() < 2) {
     return;
   }
-  unsigned int prev_span = get_prev_span(added_place);
-  unsigned int next_span = get_next_span(added_place);
-  unsigned int latest_span = std::min(prev_span, next_span);
+  unsigned int prev_side_span = get_prev_span(added_place);
+  unsigned int next_side_span = get_next_span(added_place);
+  unsigned int new_span = std::min(prev_side_span, next_side_span);
 
-  if (latest_span < shortest_span) shortest_span = latest_span;
+  if (new_span < shortest_span) shortest_span = new_span;
 }
 
 unsigned int Span::get_prev_span(SetIter now) {
