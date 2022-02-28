@@ -134,9 +134,10 @@ void only_duplicate_span_test() {
 void duplicate_span_test() {
   print_header(__func__);
   try {
-    Span s(3);
+    Span s(4);
     s.addNumber(1);
     s.addNumber(1);
+    s.addNumber(5);
     s.addNumber(5);
     print_span(s);
   } catch (std::exception &e) {
