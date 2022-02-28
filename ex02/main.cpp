@@ -8,7 +8,7 @@ namespace ft = fortytwo;
 
 #define PUT_HEADER() ft::print_header(__func__)
 
-int main() {
+void subject_test() {
   MutantStack<int> mstack;
   mstack.push(5);
   mstack.push(17);
@@ -29,6 +29,10 @@ int main() {
     ++it;
   }
   std::stack<int> s(mstack);
+}
+
+int main() {
+  subject_test();
   // std::stack<int> stack1;
   // std::stack<int> stack2;
   // stack1.push(1);
