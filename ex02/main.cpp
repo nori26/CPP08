@@ -46,14 +46,6 @@ void operatoreq_test() {
   std::cout << std::endl;
 }
 
-template <typename Iter>
-void iter_test(Iter begin, Iter end) {
-  for (; begin != end; begin++) {
-    std::cout << *begin << ", ";
-  }
-  std::cout << std::endl;
-}
-
 void it_test(MutantStack<int>::iterator begin, MutantStack<int>::iterator end) {
   for (; begin != end; begin++) {
     std::cout << *begin << ", ";
@@ -63,12 +55,12 @@ void it_test(MutantStack<int>::iterator begin, MutantStack<int>::iterator end) {
 
 void normal_iter_test(MutantStack<int> mstack) {
   PUT_HEADER();
-  iter_test(mstack.begin(), mstack.end());
+  ft::iter_test(mstack.begin(), mstack.end());
 }
 
 void reverse_normal_iter_test(MutantStack<int> mstack) {
   PUT_HEADER();
-  iter_test(mstack.rbegin(), mstack.rend());
+  ft::iter_test(mstack.rbegin(), mstack.rend());
 }
 
 void mstack_init(MutantStack<int> &mstack) {

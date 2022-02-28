@@ -22,4 +22,5 @@ void print_header(std::string funcname) {
             << "=============\n"
             << RESET_COLOR << RESET_UNDERLINE << std::endl;
 }
+
 }  // namespace fortytwo
