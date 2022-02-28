@@ -232,6 +232,7 @@ void large_test() {
   try {
     Span s(9000000);
     for (int i = 0; i < 9000000; i++) s.addNumber(i);
+    s.addNumber(INT_MAX);
     std::cout << "shotest : " << s.shortestSpan() << "\n";
     std::cout << "longest : " << s.longestSpan() << std::endl << std::endl;
   } catch (std::exception &e) {
