@@ -4,28 +4,12 @@
 #include <set>
 #include <vector>
 
-#include "color.hpp"
 #include "span.hpp"
+#include "testutil.hpp"
 
-const size_t g_max_width = 30;
+namespace ft = fortytwo;
 
-void print_header(std::string funcname) {
-  size_t len = funcname.size();
-
-  if (len > g_max_width) {
-    std::cerr << "header too long" << std::endl;
-    std::exit(EXIT_FAILURE);
-  }
-  size_t padding_size = g_max_width - len;
-  size_t front_padding_size = padding_size / 2;
-  size_t back_padding_size = padding_size - front_padding_size;
-
-  std::cout << CYAN_BOLD_UNDELINE
-            << "\n=============" << std::string(front_padding_size, ' ')
-            << funcname << std::string(back_padding_size, ' ')
-            << "=============\n"
-            << RESET_COLOR << RESET_UNDERLINE << std::endl;
-}
+#define PUT_HEADER() ft::print_header(__func__)
 
 void print_span(Span &span) {
   std::cout << "storage : ";
@@ -35,7 +19,7 @@ void print_span(Span &span) {
 }
 
 void empty_add_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(0);
     s.addNumber(1);
@@ -45,7 +29,7 @@ void empty_add_test() {
 }
 
 void empty_short_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(0);
     s.shortestSpan();
@@ -55,7 +39,7 @@ void empty_short_span_test() {
 }
 
 void empty_long_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(0);
     s.longestSpan();
@@ -65,7 +49,7 @@ void empty_long_span_test() {
 }
 
 void exceed_add_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(1);
     s.addNumber(1);
@@ -75,7 +59,7 @@ void exceed_add_test() {
   }
 }
 void exceed_add_duplicate_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(1);
     s.addNumber(1);
@@ -86,7 +70,7 @@ void exceed_add_duplicate_test() {
 }
 
 void one_elem_short_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(1);
     s.addNumber(1);
@@ -97,7 +81,7 @@ void one_elem_short_span_test() {
 }
 
 void one_elem_long_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(1);
     s.addNumber(1);
@@ -108,7 +92,7 @@ void one_elem_long_span_test() {
 }
 
 void basic_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(2);
     s.addNumber(1);
@@ -120,7 +104,7 @@ void basic_span_test() {
 }
 
 void only_duplicate_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(2);
     s.addNumber(1);
@@ -132,7 +116,7 @@ void only_duplicate_span_test() {
 }
 
 void duplicate_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(4);
     s.addNumber(1);
@@ -146,7 +130,7 @@ void duplicate_span_test() {
 }
 
 void edge_value_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(4);
     s.addNumber(INT_MAX);
@@ -164,7 +148,7 @@ void edge_value_test() {
 }
 
 void itr_basic_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(2);
     std::vector<int> v;
@@ -178,7 +162,7 @@ void itr_basic_span_test() {
 }
 
 void itr_only_duplicate_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(2);
     std::vector<int> v;
@@ -192,7 +176,7 @@ void itr_only_duplicate_span_test() {
 }
 
 void itr_duplicate_span_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(3);
     std::vector<int> v;
@@ -207,7 +191,7 @@ void itr_duplicate_span_test() {
 }
 
 void itr_edge_value_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(10);
     std::vector<int> v;
@@ -229,7 +213,7 @@ void itr_edge_value_test() {
 }
 
 void large_test() {
-  print_header(__func__);
+  PUT_HEADER();
   try {
     Span s(9000001);
     for (int i = 1111; i < 9000000; i++) s.addNumber(i);
