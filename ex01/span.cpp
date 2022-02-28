@@ -51,6 +51,16 @@ unsigned int Span::shortestSpan() const {
   return shortest_span;
 }
 
+unsigned int Span::longestSpan() const {
+  if (added < 2) {
+    std::cout << "span error" << std::endl;
+    return UINT_MAX;  // exception
+  }
+  int min_value = *storage.begin();
+  int max_value = *--storage.end();
+  return max_value - min_value;
+}
+
 void Span::update_shotest_span(SetIter place) {
   if (has_duplicate) {
     shortest_span = 0;
@@ -60,9 +70,9 @@ void Span::update_shotest_span(SetIter place) {
     return;
   }
   unsigned int prev_span = get_prev_span(place);
-  unsigned int next_span = get_prev_span(place);
+  unsigned int next_span = get_next_span(place);
   unsigned int latest_span = std::min(prev_span, next_span);
-  std::cout << prev_span << " " << next_span << std::endl;
+
   if (latest_span < shortest_span) shortest_span = latest_span;
 }
 

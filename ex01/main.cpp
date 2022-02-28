@@ -1,3 +1,4 @@
+#include <climits>
 #include <iostream>
 #include <set>
 
@@ -5,9 +6,10 @@
 
 int main() {
   Span s(10);
-  s.shortestSpan();
-  s.addNumber(10);
-  s.addNumber(1);
+  // s.shortestSpan();
+  s.addNumber(INT_MAX - 1);
+  s.addNumber(INT_MIN + 1);
   std::cout << s.shortestSpan() << std::endl;
-  s.print_storage();
+  std::cout << s.longestSpan() << std::endl;
+  // s.print_storage();
 }
