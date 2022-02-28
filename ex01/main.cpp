@@ -230,8 +230,8 @@ void itr_edge_value_test() {
 void large_test() {
   print_header(__func__);
   try {
-    Span s(9000000);
-    for (int i = 0; i < 9000000; i++) s.addNumber(i);
+    Span s(9000001);
+    for (int i = 1111; i < 9000000; i++) s.addNumber(i);
     s.addNumber(INT_MAX);
     std::cout << "shotest : " << s.shortestSpan() << "\n";
     std::cout << "longest : " << s.longestSpan() << std::endl << std::endl;
