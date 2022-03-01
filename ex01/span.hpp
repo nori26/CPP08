@@ -33,11 +33,11 @@ class Span {
 
   class TooManyElemException : public std::runtime_error {
    public:
-    TooManyElemException(const std::string &msg = "too many elements");
+    TooManyElemException(std::string const &msg = "too many elements");
   };
   class TooFewElemException : public std::runtime_error {
    public:
-    TooFewElemException(const std::string &msg = "too few elements");
+    TooFewElemException(std::string const &msg = "too few elements");
   };
 };
 #endif
