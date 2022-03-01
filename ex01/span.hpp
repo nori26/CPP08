@@ -17,6 +17,14 @@ class Span {
   unsigned int get_prev_span(SetIter place) const;
   unsigned int get_next_span(SetIter place) const;
   void update_shotest_span(Pair result);
+  class TooManyElemException : public std::runtime_error {
+   public:
+    TooManyElemException(std::string const &msg = "too many elements");
+  };
+  class TooFewElemException : public std::runtime_error {
+   public:
+    TooFewElemException(std::string const &msg = "too few elements");
+  };
 
  public:
   Span(unsigned int N);
@@ -31,13 +39,5 @@ class Span {
   unsigned int longestSpan() const;
   void print_storage() const;
 
-  class TooManyElemException : public std::runtime_error {
-   public:
-    TooManyElemException(std::string const &msg = "too many elements");
-  };
-  class TooFewElemException : public std::runtime_error {
-   public:
-    TooFewElemException(std::string const &msg = "too few elements");
-  };
 };
 #endif
