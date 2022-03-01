@@ -34,7 +34,7 @@ Span &Span::operator=(Span const &other) {
 
 void Span::addNumber(int num) {
   if (added == capacity) {
-    throw Span::TooManyElemException();
+    throw Span::TooManyElemException("too many elements");
   }
   added++;
   Pair result = storage.insert(num);
@@ -51,14 +51,14 @@ void Span::addNumber(std::vector<int>::iterator begin,
 
 unsigned int Span::shortestSpan() const {
   if (added < 2) {
-    throw Span::TooFewElemException();
+    throw Span::TooFewElemException("too few elements");
   }
   return shortest_span;
 }
 
 unsigned int Span::longestSpan() const {
   if (added < 2) {
-    throw Span::TooFewElemException();
+    throw Span::TooFewElemException("too few elements");
   }
   int min_value = *storage.begin();
   int max_value = *--storage.end();

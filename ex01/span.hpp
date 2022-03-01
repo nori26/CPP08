@@ -19,11 +19,11 @@ class Span {
   void update_shotest_span(Pair result);
   class TooManyElemException : public std::runtime_error {
    public:
-    TooManyElemException(std::string const &msg);
+    TooManyElemException(std::string const &msg = "too many elements");
   };
   class TooFewElemException : public std::runtime_error {
    public:
-    TooFewElemException(std::string const &msg);
+    TooFewElemException(std::string const &msg = "too few elements");
   };
 
  public:
