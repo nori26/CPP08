@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <utility>
 #include <vector>
+#include <string>
 
 class Span {
  private:
@@ -34,11 +35,11 @@ class Span {
 
   class TooManyElemException : public std::runtime_error {
    public:
-    TooManyElemException(const std::string &msg);
+    TooManyElemException(const std::string &msg = "too many elements");
   };
   class TooFewElemException : public std::runtime_error {
    public:
-    TooFewElemException(const std::string &msg);
+    TooFewElemException(const std::string &msg = "too few elements");
   };
 };
 #endif
