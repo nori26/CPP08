@@ -23,7 +23,7 @@ class Span {
   };
   class TooFewElemException : public std::runtime_error {
    public:
-    TooFewElemException(std::string const &msg);
+    TooFewElemException(std::string const &msg = "");
   };
 
  public:
