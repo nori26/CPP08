@@ -10,6 +10,7 @@ class Span {
   typedef std::set<int>::iterator SetIter;
   typedef std::pair<SetIter, bool> Pair;
 
+  Span();
   unsigned int capacity;
   unsigned int added;
   unsigned int shortest_span;

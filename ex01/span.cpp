@@ -15,6 +15,7 @@ SetIter next(SetIter iter) { return (++iter); }
 SetIter prev(SetIter iter) { return (--iter); }
 }  // namespace
 
+Span::Span() : capacity(), added(), shortest_span(UINT_MAX) {}
 Span::Span(unsigned int N) : capacity(N), added(), shortest_span(UINT_MAX) {}
 
 Span::~Span() {}
